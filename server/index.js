@@ -17,7 +17,7 @@ const startServer = async () => {
 
     app.use(express.static('build'));
 
-    app.get('*', (req, res, next) => {
+    app.use('*', (req, res, next) => {
         const filerRoutes = serverRoutes.filter((serverRoute) => {
             return serverRoute.startsWith(req.url)
         })
