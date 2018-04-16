@@ -59,6 +59,7 @@
   "scripts": {
     "build": "react-scripts build && babel server -d dist",
     "start": "node dist/index.js",
+    "heroku-postbuild": "./node_modules/.bin/react-scripts build && babel server -d dist",
     "precommit": "lint-staged",
     "develop:api": "./node_modules/.bin/nodemon -e js,graphql --exec \"yarn install && babel-node\" --inspect=0.0.0.0:5858 --nolazy server/index.js",
     "develop:client": "REACT_APP_REDUX_DEBUGGING_ENABLED=true ./node_modules/.bin/react-scripts start",
