@@ -57,8 +57,8 @@
     "prettier": "^1.5.3"
   },
   "scripts": {
-    "build": "react-scripts build && babel server -d dist1",
-    "start": "node dist1/index.js",
+    "build": "react-scripts build && babel server -d dist",
+    "start": "node dist/index.js",
     "heroku-postbuild": "./node_modules/.bin/react-scripts build",
     "precommit": "lint-staged",
     "develop:api": "./node_modules/.bin/nodemon -e js,graphql --exec \"yarn install && babel-node\" --inspect=0.0.0.0:5858 --nolazy server/index.js",
