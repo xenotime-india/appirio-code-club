@@ -67,6 +67,7 @@ export default () => {
   });
 
   return (req, res) => {
+
     handler(req, res, err => {
       res.statusCode = 404;
       res.end("no such location");

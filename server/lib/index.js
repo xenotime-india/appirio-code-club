@@ -36,7 +36,7 @@ export default (app) => {
     */
 
 
-    app.get('/api/githook', handler());
+    app.use('/api/githook', handler());
     /*
     app.get('/auth/callback', callback);
     app.get('/auth/whoami', whoami);
