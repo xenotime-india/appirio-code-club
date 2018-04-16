@@ -1,8 +1,8 @@
 import createHandler from "github-webhook-handler";
 import fs from "fs";
 import createApp from "github-app";
-import config from 'config';
-import PullRequest from './../../model/pullrequest';
+import config from "config";
+import PullRequest from "./../../model/pullrequest";
 
 export default () => {
   const handler = createHandler({
@@ -39,7 +39,6 @@ export default () => {
           });
         break;
       case "labeled":
-
         const pullRequest = new PullRequest(event.payload);
         pullRequest.save((err, pullRequest) => {
           if (err) return next(err);
@@ -67,10 +66,9 @@ export default () => {
   });
 
   return (req, res) => {
-
     handler(req, res, err => {
       res.statusCode = 404;
       res.end("no such location");
     });
-  }
-}
+  };
+};
