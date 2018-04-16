@@ -12,7 +12,7 @@ export default () => {
 
   const app = createApp({
     id: config.APP_ID,
-    cert: config.PRIVATE_KEY || fs.readFileSync("private-key.pem")
+    cert: config.PRIVATE_KEY || fs.readFileSync("./../../../private-key.pem")
   });
 
   handler.on("error", err => {
