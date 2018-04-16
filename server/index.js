@@ -1,0 +1,40 @@
+// 3rd party dependencies
+import express from 'express';
+import config from 'config';
+import winston from 'winston';
+import { createServer } from 'http';
+
+import api from './lib';
+
+winston.level = config.WINSTON_LEVEL || 'debug';
+const dev = config.NODE_ENV !== 'production';
+const port = config.PORT;
+const serverRoutes = ['/api'];
+
+// Scaffold the server
+const startServer = async () => {
+    const app = api(express());
+
+    app.use(express.static('build'));
+
+    app.get('*', (req, res, next) => {
+        const filerRoutes = serverRoutes.filter((serverRoute) => {
+            return serverRoute.startsWith(req.url)
+        })
+        if (filerRoutes.length == 0) {
+            return res
+                .set('Content-Type', 'text/html')
+                .sendFile(__dirname + '/build/index.html');
+        }
+        return next();
+    });
+
+    let server = createServer(app);
+    server.listen(port, err => {
+        if (err) throw err;
+        winston.info(`> Ready on http://localhost:${port}`);
+    });
+};
+
+// Start the server
+startServer();
