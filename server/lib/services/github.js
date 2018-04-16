@@ -3,6 +3,7 @@ import fs from "fs";
 import createApp from "github-app";
 import config from "config";
 import PullRequest from "./../../model/pullrequest";
+import path from 'path';
 
 export default () => {
   const handler = createHandler({
@@ -12,7 +13,7 @@ export default () => {
 
   const app = createApp({
     id: config.APP_ID,
-    cert: config.PRIVATE_KEY || fs.readFileSync("./../../../private-key.pem")
+    cert: config.PRIVATE_KEY || fs.readFileSync(path.join(__dirname,'../../../','private-key.pem'))
   });
 
   handler.on("error", err => {
