@@ -20,7 +20,7 @@ export default () => {
     console.error("Error:", err);
   });
 
-  handler.on("issues", event => {
+  handler.on("pull_request", event => {
     console.log("EVENT", event);
     switch (event.payload.action) {
       case "opened":
