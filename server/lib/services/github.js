@@ -17,7 +17,7 @@ export default () => {
   });
 
   handler.on("error", err => {
-    console.error("Error:", err.message);
+    console.error("Error:", err);
   });
 
   handler.on("issues", event => {
@@ -67,6 +67,7 @@ export default () => {
   });
 
   return (req, res) => {
+    console.log(req.body);
     handler(req, res, err => {
       res.statusCode = 404;
       res.end("no such location");
