@@ -23,7 +23,7 @@ export default () => {
   handler.on("pull_request", event => {
     console.log("EVENT", event);
     switch (event.payload.action) {
-      case "opened":
+      case "reopened":
         var installation = event.payload.installation.id;
         app
           .asInstallation(installation)
