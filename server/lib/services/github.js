@@ -6,6 +6,7 @@ import PullRequest from "./../../model/pullrequest";
 import path from 'path';
 
 export default () => {
+  console.log(config);
   const handler = createHandler({
     path: "/",
     secret: config.WEBHOOK_SECRET
@@ -67,7 +68,6 @@ export default () => {
   });
 
   return (req, res) => {
-    console.log(req.body);
     handler(req, res, err => {
       res.statusCode = 404;
       res.end("no such location");
